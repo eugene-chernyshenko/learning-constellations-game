@@ -1,0 +1,73 @@
+.svg {
+  width: min(92vw, 420px);
+  height: auto;
+  aspect-ratio: 1;
+  display: block;
+  margin: 0 auto;
+  touch-action: manipulation;
+}
+
+.svgCompact {
+  width: 100%;
+  max-width: 120px;
+  margin: 0;
+}
+
+.line {
+  stroke: rgba(255, 214, 140, 0.85);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.star {
+  fill: #fff8e8;
+  cursor: default;
+  transition: transform 0.15s ease, fill 0.15s ease;
+}
+
+.star[role='button'] {
+  cursor: pointer;
+}
+
+.star[role='button']:active {
+  transform: scale(0.92);
+  transform-origin: center;
+}
+
+.starSelected {
+  fill: #ffd866;
+}
+
+.starHint {
+  fill: #7ee0ff;
+}
+
+.hintRing {
+  fill: none;
+  stroke: rgba(126, 224, 255, 0.55);
+  stroke-width: 2;
+  animation: hintPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.starLabel {
+  fill: rgba(255, 248, 232, 0.95);
+  font-size: 5px;
+  font-family: var(--font-display, sans-serif);
+  pointer-events: none;
+}
+
+@media (min-width: 480px) {
+  .starLabel {
+    font-size: 6px;
+  }
+}
