@@ -239,8 +239,8 @@ function PickScreen({
             <span className="categoryCount"> {bonusList.length}</span>
           </button>
           <p className="subtitle categoryHint">
-            В третьей группе — история, астеризмы и сказочные имена; не всё из
-            списка — современные созвездия МАС.
+            В третьей группе — астеризмы, скопления и ориентиры на небе; это не
+            второй список официальных созвездий МАС.
           </p>
         </div>
       ) : (
@@ -255,8 +255,8 @@ function PickScreen({
           <h3 className="sectionLabel pickGroupHeading">{groupTitle}</h3>
           {group === 'extra' && (
             <p className="subtitle" style={{ marginTop: -6, marginBottom: 10 }}>
-              История, астеризмы и сказочные имена — не все из них современные
-              созвездия МАС.
+              Астеризмы, скопления и навигационные узоры — не отдельные
+              официальные созвездия МАС.
             </p>
           )}
           <div className="cardGrid">

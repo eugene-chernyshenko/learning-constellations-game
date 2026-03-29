@@ -2,117 +2,96 @@ import { chainConstellation } from './constellationChain'
 import type { Constellation } from './constellationTypes'
 
 /**
- * Сто дополнительных «узоров неба»: исторические имена, астеризмы и сказочные подписи.
- * Не входят в официальные 88 IAU (кроме совпадения имён с известными астеризмами на небе).
- * Схемы — упрощённые цепочки для той же игры.
+ * Дополнительные узоры неба: астеризмы, скопления и «наблюдательные» ориентиры.
+ * Не дублируют официальные 88 созвездий МАС как карточки; часть имён — части тех же фигур на карте.
+ * Схемы — упрощённые цепочки для игры.
  */
 const RAW = `
-argo-navis|Корабль Арго|Argo Navis|Когда-то весь корабль Ясона был одним созвездием; сейчас это Киль, Корма и Паруса.
-antinous|Антиной|Antinous|Историческая фигура рядом с Орлом в честь любимца римского императора.
-cerberus|Цербер|Cerberus|Трёхглавый пёс из мифов иногда рисовали у ног Геркулеса на старых картах.
-rangifer|Северный олень|Rangifer|Бывшее северное созвездие с оленем; сегодня звёзды вошли в другие фигуры.
-robur-carolinum|Дуб Карла|Robur Carolinum|«Королевский дуб» XVII века — красивая, но недолгая небесная шутка картографов.
-quadrans|Стенной квадрант|Quadrans Muralis|Созвездие убрали, но метеорный поток Квадрантиды напоминает о нём каждый январь.
-officina-typographica|Типография|Officina Typographica|Памятник книгопечатанию среди звёзд эпохи Просвещения.
-machina-electrica|Электрическая машина|Machina Electrica|Название времен опытов с электричеством и грозовыми «искрами».
-frederici-honores|Почёт Фридриха|Frederici Honores|Историческая дань прусскому королю на небесной карте.
-sceptrum-brandenburgicum|Скипетр Бранденбурга|Sceptrum Brandenburgicum|Скипетр на звёздном своде XVII века.
-apis|Священный бык Апис|Apis|Египетский бык среди звёзд на старых атласах.
-felis|Кошка|Felis|Кошка гонялась за мышью на исторических картах рядом с Орионом.
-gallus|Петух|Gallus|Петух на «небесной ферме» рядом с Парусами и Кормой.
-anser|Гусь|Anser|Гусь в Млечном Пути — маленькое старое имя у лебединой фигуры.
-jordanus|Река Иордан|Jordanus|Река из звёзд на картах XVII–XVIII веков.
-siren|Сирены|Sirenum|Морские сирены на пути к Золотому руну.
-tarandus|Олень Тарандус|Tarandus|Ещё одно оленье имя из прошлых каталогов.
-tigris|Тигр|Tigris|Полоса звёзд напоминала тигра у реки.
-vesuvius|Везувий|Vesuvius|Вулкан на карте для любителей Италии и географии.
-hippopotamus|Бегемот|Hippopotamus|Редкое историческое имя на южных картах.
-anchor|Якорь|Anchor|Якорь моряков среди звёзд — память о мореплавании.
-cancer-minor|Рак малый|Cancer Minor|Шутливое «дополнение» к знаку Рака на старых гравюрах.
-psalterium-georgii|Псалтырь Георга|Psalterium Georgii|Арфа в честь короля Георга на небе.
-honores-hevelii|Почёт Гевелия|Honores Hevelii|Дань великому составителю звёздных карт.
-lilium|Лилия|Lilium|Цветок на карте как гербозначимый узор.
-camelopardus-old|Старый жираф|Camelopardalis vetus|Напоминание, как менялись границы «жирафа» на небе.
-nubecula-major|Большое облако|Nubecula Major|Старое имя для Магелланова Облака.
-nubecula-minor|Малое облако|Nubecula Minor|Старое имя для Малого Магелланова Облака.
-bufo|Жаба|Bufo|Забавное историческое существо на южных картах.
-limax|Слизняк|Limax|Крошечное «небесное животное» из старых списков.
-sagitta-antonii|Стрела Антония|Sagitta Antonii|Историческое имя стрелы на небе.
-archimedis|Саркофаг Архимеда|Archimedis|Редкое памятное имя эпохи классики.
-charles-oak|Дуб Карла II|Robur Carolinum alt.|Связано с английской историей и прозвищем короля.
-antinous-canis|Пёс Антиноя|Canis Antinous|Вариант рисунка рядом с ярким Орлом.
-cerberus-et-baculum|Цербер с палкой|Cerberus et Baculum|Сложный мифологический ярлык на старой гравюре.
-river-ernidanus|Верх Эридана|Eridanus head|Условное имя для «истока» длинной реки из звёзд.
-river-po|Река По|Padus|Река на итальянских небесных картах прошлого.
-triangulum-minus|Малый треугольник|Triangulum Minus|Историческое крошечное треугольное пятнышко.
-solarium|Солнечные часы|Solarium|«Часы» на небе рядом с эклиптикой в старой символике.
-telescopium-herschelii|Телескоп Гершеля|Telescopium Herschelii|Память о больших телескопах открытий.
-battery|Батарея пушек|Battery|Военно-морской узор на редких картах.
-compass-rose|Роза ветров|Compass rose|Навигационный узор, перекликающийся с Компасом на небе.
-great-rift|Большой разлом|Great Rift|Тёмная пыль рассекает Млечный Путь.
-galactic-core-dir|К центру Галактики|Galactic center|Стрелец указывает в сторону центра Млечного Пути.
-cassiopeia-w|Трон Кассиопеи|Cassiopeia W|Буква W — кресло царицы.
-andromeda-line|Линия к галактике|Andromeda line|Цепочка ведёт к туманности Андромеды M31.
-pegasus-square|Квадрат Пегаса|Pegasus Square|Большой квадрат — тело летающего коня.
-cygnus-cross|Северный крест|Northern Cross|Лебедь вдоль Млечного Пути — крест с Денебом наверху.
-aquarius-jar|Кувшин Водолея|Water jar|Классический рисунок струи воды из кувшина.
-capricorn-fish-tail|Рыбий хвост Козерога|Sea-goat tail|Миф о козле с рыбьим хвостом.
-pisces-cord|Шнур Рыб|Pisces cord|Две рыбы соединены верёвкой на картах.
-libra-scales|Чаши Весов|Libra scales|Когда-то это были клешни Скорпиона.
-aries-horn|Рог Овна|Aries horn|Плавная дуга зодиакального Овна.
-taurus-face|Морда быка|Taurus face|Гиады и Альдебаран — голова быка.
-gemini-feet|Ноги Близнецов|Gemini feet|Две цепочки внизу от Кастора и Поллукса.
-cancer-beehive|Улей в Раке|Beehive cluster|Яркое скопление «Улей» внутри Рака.
-leo-triangle|Треугольник у Льва|Leo triangle|Яркие звёзды рядом с хвостом Льва.
+compass-rose|Роза ветров|Compass rose|Узор компаса на морских картах — напоминание, как ориентироваться по сторонам света.
+anchor|Якорь на небе|Anchor asterism|Морской якорь как символ: звёзды помогают не сбиться с пути ночью.
+great-rift|Большой разлом|Great Rift|Тёмная полоса пыли рассекает Млечный Путь — видна без приборов.
+galactic-core-dir|К центру Галактики|Galactic center|В сторону Стрельца — спрятан центр нашего Млечного Пути.
+pole-star-path|Путь к Полярной|Pole star path|По «стороне ковша» Большой Медведицы находят Полярную звезду.
+ecliptic-path|Дорога планет|Ecliptic|Солнце и планеты год за годом движутся почти по одной дуге неба.
+cassiopeia-w|Буква W Кассиопеи|Cassiopeia W|Пять ярких звёзд — самый узнаваемый узор царицы.
+andromeda-line|Цепочка к Андромеде|Andromeda chain|Яркая цепочка ведёт к туманности Андромеды M31.
+pegasus-square|Квадрат Пегаса|Pegasus Great Square|Четыре звезды — тело летающего коня на небе.
+cygnus-cross|Северный крест|Northern Cross|Лебедь вдоль Млечного Пути: Денеб наверху «креста».
+aquarius-jar|Кувшин Водолея|Water jar|Узор струи воды из кувшина на звёздных картах.
+capricorn-fish-tail|Рыбий хвост Козерога|Sea-goat tail|Часть фигуры зодиакального Козерога — коза с рыбьим хвостом.
+pisces-cord|Шнур Рыб|Pisces cord|Две рыбки соединены верёвкой на классических картах.
+libra-scales|Чаши Весов|Libra scales|Две чаши весов у зодиакальных Весов.
+aries-horn|Изгиб Овна|Aries curve|Плавная дуга звёзд у зодиакального Овна.
+taurus-face|Голова быка|Taurus face|Альдебаран и Гиады намечают голову Тельца.
+gemini-feet|Ноги Близнецов|Gemini feet|Две цепочки внизу от ярких Кастора и Поллукса.
+cancer-beehive|Улей в Раке|Beehive cluster|Яркое рассеянное скопление M44 внутри Рака.
+leo-triangle|Треугольник у Льва|Leo triangle|Яркие звёзды у хвоста и бёдер Льва.
 bootes-kite|Змей у Волопаса|Boötes kite|Ромб возле Арктура похож на воздушного змея.
-virgo-spica-spike|Шип у Спики|Spike|Яркая Спика — как колос у Девы.
-scorpius-sting|Жало Скорпиона|Scorpion sting|Кончик хвоста с яркими звёздами.
+virgo-spica-spike|Колос у Спики|Spica spike|Яркая Спика — как колос у зодиакальной Девы.
+scorpius-sting|Жало Скорпиона|Scorpion sting|Кончик хвоста с яркими звёздами у Скорпиона.
 ophiuchus-waist|Пояс Змееносца|Ophiuchus waist|Середина фигуры между двумя частями Змеи.
-serpens-gap|Разрыв Змеи|Serpens split|Змея на картах разорвана на две части вокруг Змееносца.
+serpens-gap|Две части Змеи|Serpens split|Змея на картах разорвана вокруг Змееносца на «голову» и «хвост».
 draco-coils|Витки Дракона|Draco coils|Дракон обвивается вокруг Малой Медведицы.
-cepheus-house|Домик Цефея|Cepheus house|Форма как детский домик у Полярной.
-perseus-chain|Цепь Персея|Perseus chain|Цепочка от Алголь к скоплениям и туманностям.
-auriga-capella-cap|Шапка Капеллы|Capella cap|Яркая Капелла — вершина пятиугольника Возничего.
+cepheus-house|Домик Цефея|Cepheus house|Фигура как детский домик у Полярной звезды.
+perseus-chain|Цепь Персея|Perseus chain|Цепочка от Алголы к богатым туманностям и скоплениям.
+auriga-capella-cap|Капелла в Возничем|Capella cap|Яркая Капелла — вершина пятиугольника Возничего.
 lyra-harp|Корпус лиры|Lyra frame|Ромбик возле Веги — корпус музыкальной лиры.
-aquila-shaft|Столб к Орлу|Aquila shaft|Цепочка вниз от Альтаира.
-sagitta-arrow|Маленькая стрела|Sagitta arrow|Крошечная стрела летит мимо Лебедя.
-delphinus-leap|Прыжок Дельфина|Dolphin leap|Ромб с хвостиком — дельфин в небе.
-equuleus-head|Голова Малого коня|Foal head|Крошечный узор рядом с Пегасом.
-canes-leash|Поводок гончих|Hounds leash|Две звезды как поводок у Волопаса.
-coma-cluster|Скопление Волос|Coma cluster|Роскошное скопление в Волосах Вероники.
-crater-cup|Чаша у Волопаса|Crater cup|Чаша на спине Волопаса в мифе.
-hydra-neck|Шея Гидры|Hydra neck|Начало длинной змеи у Рака и Секстанта.
-puppis-stern|Кормовая палуба|Puppis deck|Яркие звёзды кормы корабля Арго.
-vela-sail-panel|Парус|Vela sail|Парус корабля Арго у Млечного Пути.
-carina-keel-line|Кильный ряд|Carina keel|Линия вдоль киля с Канопусом.
-centaur-legs|Ноги Кентавра|Centaur legs|Нижняя часть огромного Кентавра.
-lupus-beast|Зверь Волка|Lupus beast|Жертва на алтаре в мифе о Центавре.
-ara-altar|Жертвенный алтарь|Ara altar|Алтарь у края Млечного Пути.
-corona-australis-jewel|Камень Южной короны|Corona Austr. jewel|Дуга «подковки» у Стрельца.
-telescopium-tube|Труба телескопа|Telescope tube|Крошечное созвездие-телескоп на юге.
-microscopium-lens|Линза микроскопа|Microscope lens|Микроскоп у Козерога на карте.
-sculptor-easel|Мольберт Скульптора|Sculptor easel|Стол скульптора у южного горизонта.
-fornax-furnace|Огонь печи|Fornax fire|Печь с тысячами далёких галактик на снимках.
-phoenix-wing|Крыло Феникса|Phoenix wing|Птица поднимается из звёзд у Эридана.
-grus-neck|Шея журавля|Grus neck|Журавль тянет шею к югу.
-tucana-beak|Клюв тукана|Tucan beak|Большой клюв у Малого Магелланова Облака.
-indus-spear|Копьё Индуса|Indus spear|Фигура с копьём на южном небе.
-musca-wing|Крыло мухи|Musca wing|Маленькая муха рядом с Южным Крестом.
-chamaeleon-tail|Хвост хамелеона|Chameleon tail|Прижимается к южному полюсу мира.
-octans-pole|Около южного полюса|Near south pole|Здесь нет ярких звёзд, зато важная точка карты.
-apus-tail|Хвост райской птицы|Apus tail|Райская птица у самого юга.
-dorado-fish|Золотая рыбка|Dorado fish|Рыбка у Магелланова Облака.
-volans-splash|Брызги летучей рыбы|Volans splash|Рыба «выпрыгивает» из воды на карте.
-reticulum-net|Сетка в окуляре|Reticulum net|Сетка для измерений в старых телескопах.
-horologium-pendulum|Маятник часов|Horologium pendulum|Часы с маятником на южном небе.
-eridanus-river|Река Эридан|Eridanus river|Длинная река от Ориона к югу.
-cetus-monster|Чудовище Кит|Cetus monster|Морское чудище из мифа об Андромеде.
+aquila-shaft|Столб к Орлу|Aquila shaft|Цепочка вниз от яркого Альтаира.
+sagitta-arrow|Маленькая стрела|Sagitta arrow|Крошечный астеризм-стрела рядом с Лебедем и Лирой.
+delphinus-leap|Дельфин в прыжке|Dolphin leap|Ромб с хвостиком — узор Дельфина.
+equuleus-head|Малый конь рядом с Пегасом|Foal head|Крошечный узор Малого коня у Пегаса.
+canes-leash|Гончие у Волопаса|Hounds leash|Две яркие звезды Гончих как «поводок» охоты.
+coma-cluster|Скопление Волос|Coma star cluster|Роскошное рассеянное скопление в Волосах Вероники.
+crater-cup|Чаша|Crater cup|Чаша на классических картах рядом с Волопасом.
+hydra-neck|Начало Гидры|Hydra head|Первый изгиб длинной змеи у Рака и Секстанта.
+puppis-stern|Корма Арго|Puppis deck|Яркие звёзды кормы легендарного корабля.
+vela-sail-panel|Парус Арго|Vela sail|Парус корабля Арго у Млечного Пути.
+carina-keel-line|Киль Арго|Carina keel|Линия вдоль киля с сверхяркой Канопусом.
+centaur-legs|Ноги Кентавра|Centaurus legs|Нижняя часть огромного южного Кентавра.
+lupus-beast|Волк у Центавра|Lupus figure|Фигура Волка рядом с жертвенником и Кентавром.
+ara-altar|Жертвенник|Ara figure|Алтарь у края Млечного Пути на звёздных картах.
+corona-australis-jewel|Подковка Южной короны|Corona Austr. arc|Дуга звёзд у Стрельца.
+telescopium-tube|Труба телескопа|Telescopium figure|Современный узор-компакт на южном небе.
+microscopium-lens|Микроскоп|Microscopium figure|Крошечная фигура у Козерога на карте.
+sculptor-easel|Мольберт Скульптора|Sculptor figure|Узор у южного горизонта — поле далёких галактик.
+fornax-furnace|Поле галактик Печи|Fornax deep sky|В Печи на длинных снимках — тысячи галактик.
+phoenix-wing|Крыло Феникса|Phoenix figure|Птица среди южных звёзд у Эридана.
+grus-neck|Шея Журавля|Grus figure|Журавль тянет шею над южным горизонтом.
+tucana-beak|Тукан и Облако|Tucana LMC|Большой клюв рядом с Малым Магеллановым Облаком.
+musca-wing|Муха у Южного Креста|Musca figure|Крошечная фигура рядом с Южным Крестом.
+chamaeleon-tail|Хамелеон у полюса|Chamaeleon figure|Прижимается к южному полюсу мира.
+octans-pole|Около южного полюса|South pole region|Мало ярких звёзд, но важная точка на глобусе неба.
+apus-tail|Райская птица|Apus figure|Фигура у самого юга небесного свода.
+dorado-fish|Золотая рыба и Облако|Dorado LMC|Рыбка у Большого Магелланова Облака.
+volans-splash|Летучая рыба|Volans figure|Рыба «выпрыгивает» из воды на карте.
+reticulum-net|Сетка в окуляре|Reticulum figure|Сетка для измерений в старых телескопах.
+horologium-pendulum|Часы|Horologium figure|Маятниковые часы на южной карте.
+eridanus-river|Река Эридан|Eridanus river|Длинная цепочка от Ориона к югу.
+eridanus-head|Верх Эридана|Eridanus head|Начало «реки» у Ориона.
+orion-belt|Пояс Ориона|Orion's Belt|Три звезды в ряд — самый узнаваемый зимний узор.
+orion-sword|Меч Ориона|Orion's Sword|Под поясом — звёзды и туманность; в темноте видна без телескопа.
+pleiades-apt|Плеяды|Pleiades|Яркое рассеянное скопление в Тельце, хорошо видно невооружённым глазом.
+hyades-v|V Гиад|Hyades|У Альдебарана — «нос» быка из ближнего скопления.
+big-dipper|Большой ковш|Big Dipper|Семь звёзд внутри Большой Медведицы.
+little-dipper|Малый ковш|Little Dipper|Ковшик с Полярной в Малой Медведице.
+summer-triangle|Летний треугольник|Summer Triangle|Вега, Денеб и Альтаир — летний небесный треугольник.
+winter-triangle|Зимний треугольник|Winter Triangle|Сириус, Процион и Бетельгейзе — зимний треугольник.
+winter-hexagon|Зимний шестиугольник|Winter Hexagon|Шесть ярких звёзд почти замыкают зимнее кольцо.
+coathanger|Вешалка Броуки|Brocchi's Cluster|Астеризм в Лисичке — похож на вешалку для одежды.
+false-cross|Ложный крест|False Cross|Похож на Южный крест, но это звёзды Парусов и Кормы.
+diamond-cross|Южный ромб|Diamond Cross|Ромб из ярких звёзд на южном небе.
+m31-andromeda|Галактика Андромеды|M31|Ближайшая крупная галактика; в бинокль — овальный дымок.
+orion-nebula-m42|Туманность Ориона|M42|Под средней звездой пояса; в темноте видна невооружённым глазом.
+virgo-cluster-apt|Скопление галактик в Деве|Virgo Cluster|Направление к тысячам галактик в созвездии Дева.
+double-cluster|Двойное скопление Персея|NGC 869/884|Два ярких скопления рядом на Млечном Пути.
+southern-pointers|Указатели на Южный крест|Southern Pointers|Две яркие звезды Центавра указывают на Южный крест.
+magellanic-clouds|Магеллановы Облака|Magellanic Clouds|Два спутника нашей Галактики — видны из южных широт.
 `
 
 function parseRaw(): Constellation[] {
   const rows = RAW.trim().split('\n').map((line) => line.trim()).filter(Boolean)
-  if (rows.length !== 100) {
-    throw new Error(`extra-constellations: expected 100 rows, got ${rows.length}`)
+  if (rows.length === 0) {
+    throw new Error('extra-constellations: RAW is empty')
   }
   return rows.map((line, i) => {
     const parts = line.split('|')
