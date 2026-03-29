@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import {
   CONSTELLATIONS,
   getConstellation,
@@ -142,6 +142,8 @@ export default function App() {
   )
 }
 
+type PickGroup = 'zodiac' | 'official' | 'extra'
+
 function PickScreen({
   intent,
   onBack,
@@ -151,13 +153,35 @@ function PickScreen({
   onBack: () => void
   onSelect: (id: string) => void
 }) {
+  const [group, setGroup] = useState<PickGroup | null>(null)
+
   const title =
     intent === 'learn' ? 'Какое созвездие изучим?' : 'Выбери созвездие'
-  const zodiacList = CONSTELLATIONS.filter((c) => isZodiacConstellation(c.id))
-  const bonusList = CONSTELLATIONS.filter((c) => c.id.startsWith('extra-'))
-  const classicExtraList = CONSTELLATIONS.filter(
-    (c) => !isZodiacConstellation(c.id) && !c.id.startsWith('extra-'),
+
+  const zodiacList = useMemo(
+    () => CONSTELLATIONS.filter((c) => isZodiacConstellation(c.id)),
+    [],
   )
+  const bonusList = useMemo(
+    () => CONSTELLATIONS.filter((c) => c.id.startsWith('extra-')),
+    [],
+  )
+  const classicExtraList = useMemo(
+    () =>
+      CONSTELLATIONS.filter(
+        (c) => !isZodiacConstellation(c.id) && !c.id.startsWith('extra-'),
+      ),
+    [],
+  )
+
+  const groupTitle =
+    group === 'zodiac'
+      ? 'Зодиак'
+      : group === 'official'
+        ? 'Все официальные'
+        : group === 'extra'
+          ? 'Дополнительные узоры'
+          : null
 
   const renderCard = (c: Constellation) => (
     <button
@@ -186,15 +210,65 @@ function PickScreen({
         <h2>{title}</h2>
         <span style={{ width: 88 }} aria-hidden />
       </div>
-      <h3 className="sectionLabel">Зодиак — 12 созвездий</h3>
-      <div className="cardGrid">{zodiacList.map(renderCard)}</div>
-      <h3 className="sectionLabel">Ещё на небе</h3>
-      <div className="cardGrid">{classicExtraList.map(renderCard)}</div>
-      <h3 className="sectionLabel">Дополнительные узоры</h3>
-      <p className="subtitle" style={{ marginTop: -4, marginBottom: 6 }}>
-        История, астеризмы и сказочные имена — не все из них современные созвездия МАС.
-      </p>
-      <div className="cardGrid">{bonusList.map(renderCard)}</div>
+
+      {group === null ? (
+        <div className="stack categoryPick">
+          <p className="subtitle">Сначала выбери группу</p>
+          <button
+            type="button"
+            className="btn btnPrimary"
+            onClick={() => setGroup('zodiac')}
+          >
+            Зодиак
+            <span className="categoryCount"> {zodiacList.length} созвездий</span>
+          </button>
+          <button
+            type="button"
+            className="btn btnSecondary"
+            onClick={() => setGroup('official')}
+          >
+            Все официальные
+            <span className="categoryCount"> {classicExtraList.length}</span>
+          </button>
+          <button
+            type="button"
+            className="btn btnSecondary"
+            onClick={() => setGroup('extra')}
+          >
+            Дополнительные узоры
+            <span className="categoryCount"> {bonusList.length}</span>
+          </button>
+          <p className="subtitle categoryHint">
+            В третьей группе — история, астеризмы и сказочные имена; не всё из
+            списка — современные созвездия МАС.
+          </p>
+        </div>
+      ) : (
+        <>
+          <button
+            type="button"
+            className="btn btnGhost backToGroups"
+            onClick={() => setGroup(null)}
+          >
+            Назад к группам
+          </button>
+          <h3 className="sectionLabel pickGroupHeading">{groupTitle}</h3>
+          {group === 'extra' && (
+            <p className="subtitle" style={{ marginTop: -6, marginBottom: 10 }}>
+              История, астеризмы и сказочные имена — не все из них современные
+              созвездия МАС.
+            </p>
+          )}
+          <div className="cardGrid">
+            {(group === 'zodiac'
+              ? zodiacList
+              : group === 'official'
+                ? classicExtraList
+                : bonusList
+            ).map(renderCard)}
+          </div>
+        </>
+      )}
     </div>
   )
 }

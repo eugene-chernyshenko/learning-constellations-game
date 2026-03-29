@@ -113,6 +113,45 @@ h2 {
   align-items: stretch;
 }
 
+.categoryPick {
+  margin-top: 6px;
+}
+
+.categoryCount {
+  display: block;
+  font-size: 0.88em;
+  font-weight: 500;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+.btnPrimary .categoryCount {
+  color: rgba(26, 18, 8, 0.75);
+}
+
+.btnSecondary .categoryCount {
+  color: rgba(255, 248, 232, 0.8);
+}
+
+.categoryHint {
+  margin-top: 6px;
+  font-size: 0.85em;
+  line-height: 1.4;
+  max-width: 36em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.backToGroups {
+  width: 100%;
+  min-height: 48px;
+  margin-bottom: 4px;
+}
+
+.pickGroupHeading {
+  margin-top: 0;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
