@@ -1,7 +1,7 @@
 import { chainConstellation, hashId } from './constellationChain'
 import type { Constellation } from './constellationTypes'
 
-/** Оставшиеся официальные созвездия IAU (45 шт.), схемы — упрощённые цепочки для игры. */
+/** Оставшиеся официальные созвездия IAU (42 шт.), схемы — упрощённые цепочки для игры. */
 export const IAU_REMAINING_CONSTELLATIONS: Constellation[] = [
   chainConstellation(
     {
@@ -326,39 +326,12 @@ export const IAU_REMAINING_CONSTELLATIONS: Constellation[] = [
   ),
   chainConstellation(
     {
-      id: 'sagitta',
-      nameRu: 'Стрела',
-      nameLat: 'Sagitta',
-      fact: 'Самое маленькое стрелковое созвездие; стрела летит мимо Лебедя и Лиры.',
-    },
-    5,
-  ),
-  chainConstellation(
-    {
       id: 'sculptor',
       nameRu: 'Скульптор',
       nameLat: 'Sculptor',
       fact: 'Стол скульптора у южного неба; там целое поле далёких галактик.',
     },
     6,
-  ),
-  chainConstellation(
-    {
-      id: 'scutum',
-      nameRu: 'Щит',
-      nameLat: 'Scutum',
-      fact: 'Щит короля Яна Собеского; маленькое пятно у самой яркой полосе Млечного Пути.',
-    },
-    5,
-  ),
-  chainConstellation(
-    {
-      id: 'serpens',
-      nameRu: 'Змея',
-      nameLat: 'Serpens',
-      fact: 'Змея на картах разорвана на две части — Змееносец держит её посередине.',
-    },
-    7,
   ),
   chainConstellation(
     {
