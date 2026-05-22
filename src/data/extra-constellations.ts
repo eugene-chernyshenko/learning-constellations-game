@@ -47,7 +47,7 @@ hydra-neck|Начало Гидры|Hydra head|Первый изгиб длинн
 puppis-stern|Корма Арго|Puppis deck|Яркие звёзды кормы легендарного корабля.
 vela-sail-panel|Парус Арго|Vela sail|Парус корабля Арго у Млечного Пути.
 carina-keel-line|Киль Арго|Carina keel|Линия вдоль киля с сверхяркой Канопусом.
-centaur-legs|Ноги Кентавра|Centaurus legs|Нижняя часть огромного южного Кентавра.
+centaur-legs|Ноги Центавра|Centaurus legs|Нижняя часть огромного южного Центавра.
 lupus-beast|Волк у Центавра|Lupus figure|Фигура Волка рядом с жертвенником и Кентавром.
 ara-altar|Жертвенник|Ara figure|Алтарь у края Млечного Пути на звёздных картах.
 corona-australis-jewel|Подковка Южной короны|Corona Austr. arc|Дуга звёзд у Стрельца.

@@ -15,7 +15,7 @@ export const IAU_REMAINING_CONSTELLATIONS: Constellation[] = [
   chainConstellation(
     {
       id: 'apus',
-      nameRu: 'Райская птица',
+      nameRu: 'Райская Птица',
       nameLat: 'Apus',
       fact: 'У самого южного неба; звёзды неяркие, зато там красивые туманности для телескопа.',
     },
@@ -64,7 +64,7 @@ export const IAU_REMAINING_CONSTELLATIONS: Constellation[] = [
   chainConstellation(
     {
       id: 'centaurus',
-      nameRu: 'Кентавр',
+      nameRu: 'Центавр',
       nameLat: 'Centaurus',
       fact: 'Огромное южное созвездие; Альфа Центавра — ближайшая к Солнцу звёздная система.',
     },
@@ -120,7 +120,7 @@ export const IAU_REMAINING_CONSTELLATIONS: Constellation[] = [
   chainConstellation(
     {
       id: 'corona-australis',
-      nameRu: 'Южная корона',
+      nameRu: 'Южная Корона',
       nameLat: 'Corona Australis',
       fact: 'Подковка из звёзд у Стрельца — «южная сестра» Северной короны.',
     },
@@ -138,7 +138,7 @@ export const IAU_REMAINING_CONSTELLATIONS: Constellation[] = [
   chainConstellation(
     {
       id: 'dorado',
-      nameRu: 'Золотая рыба',
+      nameRu: 'Золотая Рыба',
       nameLat: 'Dorado',
       fact: 'Южное созвездие; внутри него огромное Магелланово Облако с туманностями.',
     },
@@ -183,7 +183,7 @@ export const IAU_REMAINING_CONSTELLATIONS: Constellation[] = [
   chainConstellation(
     {
       id: 'hydrus',
-      nameRu: 'Южная гидра',
+      nameRu: 'Южная Гидра',
       nameLat: 'Hydrus',
       fact: 'Маленький «водяной змей» у южного полюса; не путать с большой Гидрой.',
     },
@@ -192,9 +192,9 @@ export const IAU_REMAINING_CONSTELLATIONS: Constellation[] = [
   chainConstellation(
     {
       id: 'indus',
-      nameRu: 'Индус',
+      nameRu: 'Индейец',
       nameLat: 'Indus',
-      fact: 'Силуэт с копьём на южном небе; одно из «новых» созвездий эпохи Великих географических открытий.',
+      fact: 'Фигура индейца с копьём на южном небе — одно из «новых» созвездий эпохи Великих географических открытий.',
     },
     6,
   ),
@@ -228,7 +228,7 @@ export const IAU_REMAINING_CONSTELLATIONS: Constellation[] = [
   chainConstellation(
     {
       id: 'mensa',
-      nameRu: 'Столовая гора',
+      nameRu: 'Столовая Гора',
       nameLat: 'Mensa',
       fact: 'Названо в честь Столовой горы у Кейптауна, где Лакайль наблюдал южное небо; ярких звёзд почти нет.',
     },
@@ -372,7 +372,7 @@ export const IAU_REMAINING_CONSTELLATIONS: Constellation[] = [
   chainConstellation(
     {
       id: 'volans',
-      nameRu: 'Летучая рыба',
+      nameRu: 'Летучая Рыба',
       nameLat: 'Volans',
       fact: 'Рыба, выпрыгивающая из воды; у самого южного края неба.',
     },

@@ -510,7 +510,7 @@ export const CONSTELLATIONS: Constellation[] = [
   },
   {
     id: 'crux',
-    nameRu: 'Южный крест',
+    nameRu: 'Южный Крест',
     nameLat: 'Crux',
     fact: 'Четыре яркие звезды складываются в крест; в Южном полушарии по ним находят юг, как по компасу.',
     stars: [
@@ -740,7 +740,7 @@ export const CONSTELLATIONS: Constellation[] = [
   },
   {
     id: 'corona-borealis',
-    nameRu: 'Северная корона',
+    nameRu: 'Северная Корона',
     nameLat: 'Corona Borealis',
     fact: 'Полукруг из звёзд — как драгоценный венец; в мифе это подарок дочери Миноса.',
     stars: [
@@ -760,7 +760,7 @@ export const CONSTELLATIONS: Constellation[] = [
   },
   {
     id: 'equuleus',
-    nameRu: 'Малый конь',
+    nameRu: 'Малый Конь',
     nameLat: 'Equuleus',
     fact: 'Малый конь — одно из самых крошечных созвездий; на небе он как будто рядом с большим Пегасом.',
     stars: [
@@ -881,7 +881,7 @@ export const CONSTELLATIONS: Constellation[] = [
   },
   {
     id: 'piscis-austrinus',
-    nameRu: 'Южная рыба',
+    nameRu: 'Южная Рыба',
     nameLat: 'Piscis Austrinus',
     fact: 'Очень яркая Фомальгаут — как глаз южной рыбы; она одна из ближайших к Солнцу среди ярких звёзд.',
     stars: [
@@ -898,7 +898,7 @@ export const CONSTELLATIONS: Constellation[] = [
   },
   {
     id: 'leo-minor',
-    nameRu: 'Малый лев',
+    nameRu: 'Малый Лев',
     nameLat: 'Leo Minor',
     fact: 'Малый лев — крошечное созвездие рядом с большим Львом; ярких звёзд мало, но узор узнают по соседству с Регулом.',
     stars: [
