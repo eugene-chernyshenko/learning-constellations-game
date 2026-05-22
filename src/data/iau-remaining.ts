@@ -33,9 +33,9 @@ export const IAU_REMAINING_CONSTELLATIONS: Constellation[] = [
   chainConstellation(
     {
       id: 'caelum',
-      nameRu: 'Гравёр',
+      nameRu: 'Резец',
       nameLat: 'Caelum',
-      fact: 'Самое крошечное «классическое» созвездие между Золотой Рыбой и Орионом.',
+      fact: 'Крошечное южное созвездие; Лакайль назвал его «инструментом гравёра» — на картах это резец скульптора.',
     },
     4,
   ),
@@ -228,9 +228,9 @@ export const IAU_REMAINING_CONSTELLATIONS: Constellation[] = [
   chainConstellation(
     {
       id: 'mensa',
-      nameRu: 'Столешница',
+      nameRu: 'Столовая гора',
       nameLat: 'Mensa',
-      fact: 'Названо в честь Столовой горы в Африке; на нём почти нет ярких звёзд.',
+      fact: 'Названо в честь Столовой горы у Кейптауна, где Лакайль наблюдал южное небо; ярких звёзд почти нет.',
     },
     4,
   ),
